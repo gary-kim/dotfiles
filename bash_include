@@ -1,0 +1,3 @@
+
+SCRIPTPATH=$( dirname "${BASH_SOURCE[0]}" )
+. $SCRIPTPATH/bash_dnt
