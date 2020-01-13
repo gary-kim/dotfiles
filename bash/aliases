@@ -1,0 +1,21 @@
+
+daemonize() {
+    nohup $@ 0<&- &>/dev/null &
+}
+
+# _ifExistsThenElse will check if the given command exists. If it does, it will run the command. If it dosen't the last argument will be substituted in as the command but the same arguments will be used.
+# Example: alias docker="_ifExistsThenElse podman docker"
+_ifExistsThenElse() {
+    type $1 > /dev/null && $1 ${@:3} || $2 ${@:3}
+}
+
+# Jetbrains shortcuts
+
+alias phpstorm="daemonize phpstorm"
+alias goland="daemonize goland"
+alias webstorm="daemonize webstorm"
+alias clion="daemonize clion"
+
+# Podman alias
+alias docker="_ifExistsThenElse podman docker"
+
