@@ -16,6 +16,13 @@ alias goland="daemonize goland"
 alias webstorm="daemonize webstorm"
 alias clion="daemonize clion"
 
-# Podman alias
-alias docker="_ifExistsThenElse podman docker"
+# Docker/Podman related
+_docker() {
+    _ifExistsThenElse podman docker "$@"
+}
+alias docker="_docker"
+
+_dockerRun() {
+    _docker run --rm -it -u $(id -u):$(id -g) "$@"
+}
 

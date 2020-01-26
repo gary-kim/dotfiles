@@ -1,0 +1,3 @@
+alias fdroid="_dockerRun -v $(pwd):/repo registry.gitlab.com/fdroid/docker-executable-fdroidserver:latest"
+alias manim="_dockerRun --entrypoint=manim --workdir /tmp/workdir -v "$(pwd)/:/tmp/workdir" "garykim/manim:latest" --media_dir=/tmp/workdir"
+
