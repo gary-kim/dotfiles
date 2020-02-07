@@ -1,11 +1,11 @@
 
-daemonize() {
+daemonize () {
     nohup $@ 0<&- &>/dev/null &
 }
 
 # _ifExistsThenElse will check if the given command exists. If it does, it will run the command. If it dosen't the last argument will be substituted in as the command but the same arguments will be used.
 # Example: alias docker="_ifExistsThenElse podman docker"
-_ifExistsThenElse() {
+_ifExistsThenElse () {
     type $1 &> /dev/null && $1 ${@:3} || $2 ${@:3}
 }
 
@@ -17,12 +17,15 @@ alias webstorm="daemonize webstorm"
 alias clion="daemonize clion"
 
 # Docker/Podman related
-_docker() {
-    _ifExistsThenElse podman docker "$@"
-}
-alias docker="_docker"
+if ! type docker &> /dev/null ; then
+    docker () {
+        podman "$@"
+    }
+    export -f docker
+fi
 
-_dockerRun() {
-    _docker run --rm -it -u $(id -u):$(id -g) "$@"
+_dockerRun () {
+    docker run --rm -it -u $(id -u):$(id -g) "$@"
 }
+export -f _dockerRun
 

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+. $SCRIPTPATH/../bash/aliases
+_dockerRun -v $(pwd):/repo registry.gitlab.com/fdroid/docker-executable-fdroidserver:latest "$@"
