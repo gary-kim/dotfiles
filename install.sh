@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
 
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+
 # Install into ~/.bashrc
-read -r -d '' bashrc << "EOF"
-if [ -f ~/dotfiles/bash_include ]; then
-    . ~/dotfiles/bash_include
-fi
-PATH="$PATH:~/dotfiles/path"
-EOF
-echo -e "${bashrc}" >> $HOME/.bashrc
+BASHRC="if [ -f '$SCRIPTPATH/bash_include' ]; then . '$SCRIPTPATH/bash_include'; fi"
+echo -e "${BASHRC}" >> $HOME/.bashrc
 

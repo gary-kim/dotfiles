@@ -2,3 +2,5 @@
 SCRIPTPATH=$( dirname "${BASH_SOURCE[0]}" )
 . $SCRIPTPATH/bash/dnt
 . $SCRIPTPATH/bash/aliases
+
+PATH="$PATH:$SCRIPTPATH/path"
