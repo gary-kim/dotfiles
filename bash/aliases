@@ -15,6 +15,7 @@ alias phpstorm="daemonize phpstorm"
 alias goland="daemonize goland"
 alias webstorm="daemonize webstorm"
 alias clion="daemonize clion"
+alias idea="daemonize idea"
 
 # Docker/Podman related
 if ! type docker &> /dev/null ; then
