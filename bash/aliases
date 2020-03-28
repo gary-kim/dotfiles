@@ -9,8 +9,11 @@ _ifExistsThenElse () {
     type $1 &> /dev/null && $1 ${@:3} || $2 ${@:3}
 }
 
-# Jetbrains shortcuts
+# Clipboard convenience
+alias clipboard-copy="xclip -selection clipboard"
+alias clipboard-paste="xclip -o -selection clipboard"
 
+# Jetbrains shortcuts
 alias phpstorm="daemonize phpstorm"
 alias goland="daemonize goland"
 alias webstorm="daemonize webstorm"
