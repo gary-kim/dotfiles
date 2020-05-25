@@ -33,3 +33,6 @@ _dockerRun () {
 }
 export -f _dockerRun
 
+# Tmpdir helper
+alias tmpdir="cd $(mktemp -d)"
+
