@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -euf -o pipefail
+
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+. $SCRIPTPATH/../bash/aliases
+_dockerRunDefaultUser --workdir /workdir -v "$(pwd)/:/workdir" "$@"

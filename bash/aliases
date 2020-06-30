@@ -28,8 +28,13 @@ if ! type docker &> /dev/null ; then
     export -f docker
 fi
 
+_dockerRunDefaultUser () {
+    docker run --rm -it "$@"
+}
+export -f _dockerRunDefaultUser
+
 _dockerRun () {
-    docker run --rm -it -u $(id -u):$(id -g) "$@"
+    _dockerRunDefaultUser -u $(id -u):$(id -g) "$@"
 }
 export -f _dockerRun
 
