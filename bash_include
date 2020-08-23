@@ -2,5 +2,6 @@
 SCRIPTPATH=$( dirname "${BASH_SOURCE[0]}" )
 . $SCRIPTPATH/bash/dnt
 . $SCRIPTPATH/bash/aliases
+. $SCRIPTPATH/bash/php_config
 
 PATH="$PATH:$SCRIPTPATH/path"
