@@ -6,3 +6,6 @@ SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 BASHRC="if [ -f '$SCRIPTPATH/bash_include' ]; then . '$SCRIPTPATH/bash_include'; fi"
 echo -e "${BASHRC}" >> $HOME/.bashrc
 
+# Install .tmux.conf
+cp "$SCRIPTPATH/tmux.conf" "$HOME/.tmux.conf"
+
