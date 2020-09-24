@@ -28,6 +28,9 @@ if ! type docker &> /dev/null ; then
     export -f docker
 fi
 
+# VSCodium
+alias code="codium"
+
 _dockerRunDefaultUser () {
     docker run --rm -it "$@"
 }
