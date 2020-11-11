@@ -7,5 +7,5 @@ BASHRC="if [ -f '$SCRIPTPATH/bash_include' ]; then . '$SCRIPTPATH/bash_include';
 echo -e "${BASHRC}" >> $HOME/.bashrc
 
 # Install .tmux.conf
-cp "$SCRIPTPATH/tmux.conf" "$HOME/.tmux.conf"
+ln -s "$SCRIPTPATH/tmux.conf" "$HOME/.tmux.conf"
 
