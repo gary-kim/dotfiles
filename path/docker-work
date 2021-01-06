@@ -4,4 +4,4 @@ set -euf -o pipefail
 
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 . $SCRIPTPATH/../bash/aliases
-_dockerRun --workdir /workdir -v "$(pwd)/:/workdir" "$@"
+_dockerRun --workdir /workdir --env="DISPLAY" -v "/etc/group:/etc/group:ro" -v "/etc/passwd:/etc/passwd:ro" -v "/etc/shadow:/etc/shadow:ro" -v "/etc/sudoers.d:/etc/sudoers.d:ro" -v "/tmp/.X11-unix:/tmp/.X11-unix:rw" -v "$(pwd)/:/workdir" "$@"
