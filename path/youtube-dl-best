@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -euf -o pipefail
+
+youtube-dl -f bestvideo[ext=mp4]+bestaudio[ext=m4a] --merge-output-format mp4 --output "%(upload_date)s %(title)s.%(ext)s" "$@"
