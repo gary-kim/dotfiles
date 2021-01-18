@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -euf -o pipefail
+
+rclone mount --vfs-cache-mode writes -v --stats 30s "$@"

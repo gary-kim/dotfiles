@@ -4,4 +4,4 @@ set -euf -o pipefail
 
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 . $SCRIPTPATH/../bash/aliases
-_dockerRun -v "$(pwd)/:/usr/local/src/your-app" "garykim/gcg-fork" "$@"
+_dockerRun -v "$(pwd)/:/usr/local/src/your-app" --env "CHANGELOG_GITHUB_TOKEN=$GITHUB_TOKEN" "garykim/gcg-fork" "$@"
