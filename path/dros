@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -euf -o pipefail
+
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+. $SCRIPTPATH/../bash/aliases
+
+if ! docker inspect gary-kim-dotfiles-dros &> /dev/null ; then
+    docker run -it -d --name "gary-kim-dotfiles-dros" --workdir /catkin_ws -v "$HOME/catkin_ws:/catkin_ws" --network host "ros:melodic-ros-base" "/bin/bash" "-c" "groupadd -r -g $(id -g) $(id -g --name) && useradd -r -u $(id -u) -g $(id -g) -d /catkin_ws -s /bin/bash $(id -g --name) && usermod -a -G sudo $(id -u --name) && echo 'gary ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && chmod 777 /root && chmod 777 /root/.bashrc && echo alias sudo=\'sudo -E\' >> /root/.bashrc && sleep infinity"
+fi
+
+if [[ $(docker inspect gary-kim-dotfiles-dros | jq '.[0].State.Running') == "false" ]]; then
+    docker start gary-kim-dotfiles-dros
+fi
+docker exec -it gary-kim-dotfiles-dros sudo -E -u $(id -u --name) /ros_entrypoint.sh "$@"
+
